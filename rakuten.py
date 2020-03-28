@@ -1,8 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
-keyword = "mavic+mini"
-URL = "https://search.rakuten.co.jp/search/mall/{keyword}"
+keyword = input("라쿠텐에서 검색할 상품을 입력해 주세요 (japanese, english only):").replace(" ","+")
+URL = f"https://search.rakuten.co.jp/search/mall/{keyword}"
+print(URL)
 
 def get_last_page():
     result = requests.get(URL)
@@ -17,7 +18,7 @@ def get_last_page():
 
 def extract_goods(html):
     title = html.find("div", class_="content title").find("a")["title"]
-    price = html.find("div", class_="content description price").find("span", class_="important")
+    price = html.find("div", class_="content description price").find("span", class_="important").text
     link = html.find("div", class_="content title").find("a")["href"]
 
     return {"title":title, "pricd":price, "link":link}
