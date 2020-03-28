@@ -1,2 +1,2 @@
-# bingo5_soup
- bingo5 - crawling to csv
+# rakuten_soup
+ rakuten - crawling to csv
